@@ -1,0 +1,17 @@
+Package: SequencingExplainer
+Title: What the Package Does (one line, title case)
+Version: 0.0.0.9000
+Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.0.0)
+Imports:
+	Rsamtools,
+	dplyr,	
+	ggplot2,
+	tidyr,
+	grid
+License: GPL
+Encoding: UTF-8
+LazyData: true
+Suggests: testthat
+RoxygenNote: 6.0.1
