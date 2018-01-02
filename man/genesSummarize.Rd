@@ -4,13 +4,14 @@
 \alias{genesSummarize}
 \title{genesSumarize}
 \usage{
-genesSummarize(bamDataFrame, geneData = SequencingExplainer::TAIR10_genes,
-  chromosome = NULL, range = 0)
+genesSummarize(bamDataFrame,
+  geneData = SequencingExplainer::TAIR10_genes_tidy, chromosome = NULL,
+  range = 0)
 }
 \arguments{
 \item{bamDataFrame}{data frame converted to R using \code{bamToR()} function}
 
-\item{geneData}{data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}}
+\item{geneData}{data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
 
 \item{chromosome}{optional, number of chromosome}
 

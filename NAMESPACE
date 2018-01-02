@@ -2,6 +2,7 @@
 
 export(bamToR)
 export(genesSummarize)
+export(ksDistributionTest)
 export(matchToGene)
 export(plotCoverage)
 export(plotGeneDistribution)
@@ -20,4 +21,5 @@ importFrom(ggplot2,theme_bw)
 importFrom(ggplot2,ylab)
 importFrom(grid,grid.draw)
 importFrom(grid,grid.newpage)
+importFrom(stats,ks.test)
 importFrom(tidyr,separate)

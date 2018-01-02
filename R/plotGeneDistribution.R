@@ -1,8 +1,10 @@
 #'@title plotGeneDistribution
 #'
+#'@description Plot of distribution on selected gene
+#'
 #'@param gene character with gene name
 #'@param bamDataFrame data frame converted to R using \code{bamToR()} function
-#'@param geneData ata frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}
+#'@param geneData ata frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}
 #'@param range how many nucleotide before \code{start} and after \code{stop} we include to genes
 #'
 #'@importFrom dplyr filter
@@ -10,10 +12,8 @@
 #'
 #'@export
 
-plotGeneDistribution <- function(gene, bamDataFrame, geneData=SequencingExplainer::TAIR10_genes, range=0){
-  geneData <- filter(geneData, V3=="gene")
-  geneData <- separate(geneData, col=V9, into=c("id","note","name"), sep="\\;")
-  geneData$id <- substr(geneData$id, 4, length(geneData$id))
+plotGeneDistribution <- function(gene, bamDataFrame, geneData=SequencingExplainer::TAIR10_genes_tidy, range=0){
+  pos<-id<-V4<-V5 <- NULL
   geneInfo <- filter(geneData, id==gene)
   startPosition <- geneInfo$V4
   endPosition <- geneInfo$V5

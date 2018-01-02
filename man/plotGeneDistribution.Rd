@@ -5,14 +5,17 @@
 \title{plotGeneDistribution}
 \usage{
 plotGeneDistribution(gene, bamDataFrame,
-  geneData = SequencingExplainer::TAIR10_genes, range = 0)
+  geneData = SequencingExplainer::TAIR10_genes_tidy, range = 0)
 }
 \arguments{
 \item{gene}{character with gene name}
 
 \item{bamDataFrame}{data frame converted to R using \code{bamToR()} function}
 
-\item{geneData}{ata frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}}
+\item{geneData}{ata frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
 
 \item{range}{how many nucleotide before \code{start} and after \code{stop} we include to genes}
+}
+\description{
+Plot of distribution on selected gene
 }
