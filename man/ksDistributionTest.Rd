@@ -5,7 +5,8 @@
 \title{ksDistributionTest}
 \usage{
 ksDistributionTest(data1, data2, gene,
-  geneData = SequencingExplainer::TAIR10_genes_tidy, strand = "both")
+  geneData = SequencingExplainer::TAIR10_genes, strand = "pos",
+  genePart = "gene")
 }
 \arguments{
 \item{data1}{First data set which contains informations about selected gene.}
@@ -17,6 +18,8 @@ ksDistributionTest(data1, data2, gene,
 \item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
 
 \item{strand}{On which strand we want to compute test}
+
+\item{genePart}{The part of gene we want to test. By default we conduct test for whole gene.}
 }
 \description{
 Kolmogorov-Smirnov test for gene from two datasets

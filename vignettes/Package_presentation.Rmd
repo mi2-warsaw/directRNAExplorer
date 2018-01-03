@@ -1,0 +1,81 @@
+---
+title: "sequencingExplainer - functionalities"
+author: "Aleksandra Grudziaz"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE, 
+  warning=FALSE, 
+  message = FALSE
+)
+```
+
+## .bam to .rda conversion
+
+For conversion from .bam format to .rda we can use the `bamToR()` function. This function uses a Rsamtools package from the Bioconductor, so we have to load this package before.
+
+```{r}
+library(Rsamtools)
+library(SequencingExplainer)
+```
+```{r, eval = F}
+bamData <- bamToR("P13.2016-11-17T16_40_36.1234062861011.fc1.ch1.sorted.bam")
+```
+
+We have to remember that we should set path to a directory containing this bam file.
+
+## Counts per gene
+
+Using frame created above we can find out, for each gene, how many nucleotides were recorded during the sequencing. For genes aggrergation we use the `TAIR10_genes` data. In my examples I use data for first chromosome.
+
+```{r, include = FALSE}
+datawt <- dataChromosome1
+setwd("C:/Users/Admin/Documents")
+load("brmDataChromosome1.rda")
+databrm <- brmDataChromosome1
+```
+```{r}
+head(datawt)
+```
+
+```{r}
+genesSummary <- genesSummarize(datawt)
+genesSummary <- dplyr::arrange(genesSummary, desc(counts))
+
+head(genesSummary)
+```
+
+
+## Comparision between two groups
+
+We can compare the distribution of counts between two genes or part of the gene (for example three prime UTR, exons). We also can compare distributions between positive or negative strands. We use for this comparision the two-sample Kolmogorov-Smirnov test.
+In next example I will use the data for gene "AT1G06680".
+
+```{r}
+ksDistributionTest(datawt, databrm, "AT1G06680", genePart = "three_prime_UTR", strand="neg")
+```
+
+## Coverage plot
+
+For chosen gene we can draw a coverage plot for `datawt` and `databrm`.
+First we have plots for the three prime UTR.
+```{r, fig.width=7}
+plotGeneDistribution(gene="AT1G06680", bamDataFrame=datawt, genePart = "three_prime_UTR")
+plotGeneDistribution(gene="AT1G06680", bamDataFrame=databrm, genePart = "three_prime_UTR")
+```
+
+And plots for whole gene.
+```{r, fig.width=7}
+plotGeneDistribution(gene="AT1G06680", bamDataFrame=datawt)
+plotGeneDistribution(gene="AT1G06680", bamDataFrame=databrm)
+
+```

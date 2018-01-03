@@ -15,7 +15,7 @@
 genesSummarize <- function(bamDataFrame, geneData=SequencingExplainer::TAIR10_genes_tidy, chromosome=NULL, range=0){
   V1 <- NULL
   if(!is.null(chromosome)){
-    geneData <- filter(geneData, V1==paste("Chr",chromosome))
+    geneData <- filter(geneData, V1==paste("Chr",chromosome, sep=""))
   }
   counts <- matchToGene(positions = bamDataFrame$pos, start=geneData$V4, stop=geneData$V5, geneName=geneData$id, range = range)
   uniqueCounts <- matchToGene(positions = unique(bamDataFrame$pos),start=geneData$V4, stop=geneData$V5, geneName=geneData$id, range = range)

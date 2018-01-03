@@ -7,6 +7,7 @@
 #'@param gene Gene name
 #'@param geneData Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}
 #'@param strand On which strand we want to compute test
+#'@param genePart The part of gene we want to test. By default we conduct test for whole gene.
 #'
 #'
 #'@importFrom dplyr filter
@@ -15,16 +16,22 @@
 #'@export
 
 
-ksDistributionTest <- function(data1, data2, gene, geneData = SequencingExplainer::TAIR10_genes_tidy, strand="both"){
-  id<-V4<-V5 <- NULL
-  geneData <- filter(geneData, id == gene)
-  geneRange <- c(geneData$V4, geneData$V5)
+ksDistributionTest <- function(data1, data2, gene, geneData = SequencingExplainer::TAIR10_genes, strand="pos", genePart="gene"){
+  id<-V4<-V5<-V3 <- NULL
+  geneInfo <- filter(geneData, id==gene)
+  geneInfo <- filter(geneInfo, V3==genePart)
+  if(dim(geneInfo)[1]>1){
+    startPosition <-min(geneInfo$V4)
+    endPosition <- max(geneInfo$V5)
+  }else{
+    startPosition <- geneInfo$V4
+    endPosition <- geneInfo$V5
+  }
+  
+  geneRange <- c(startPosition, endPosition)
   if((geneRange[1]<min(data1$pos) || geneRange[2]>max(data1$pos)) || (geneRange[1]<min(data2$pos) || geneRange[2]>max(data2$pos))){
     stop("Your data sets don't contain selected gene")
   }
-  
-  #data1 <- subset(data1, pos>=geneRange[1] & pos<=geneRange[2])
-  #data2 <- subset(data2, pos>=geneRange[1] & pos<=geneRange[2])
   
   data1 <- data1[data1$pos>=geneRange[1] & data1$pos<=geneRange[2],]
   data2 <- data2[data2$pos>=geneRange[1] & data2$pos<=geneRange[2],]
