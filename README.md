@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/AleksandraDabrowska/SequencingExplainer.svg?branch=master)](https://travis-ci.org/mi2-warsaw/sequencingExplainer)
-[![Github Issues](http://githubbadges.herokuapp.com//mi2-warsaw/sequencingExplainer/issues.svg)](https://github.com/MI2DataLab/factorMerger/issues)
+[![Github Issues](http://githubbadges.herokuapp.com/mi2-warsaw/sequencingExplainer/issues.svg)](https://github.com//mi2-warsaw/sequencingExplainer/issues)
 
 # SequencingExplainer
 
