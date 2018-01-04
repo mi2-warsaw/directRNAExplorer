@@ -37,10 +37,8 @@ We have to remember that we should set path to a directory containing this bam f
 
 Using frame created above we can find out, for each gene, how many nucleotides were recorded during the sequencing. For genes aggrergation we use the `TAIR10_genes` data. In my examples I use data for first chromosome.
 
-```{r, include = FALSE}
+```{r}
 datawt <- dataChromosome1
-setwd("C:/Users/Admin/Documents")
-load("brmDataChromosome1.rda")
 databrm <- brmDataChromosome1
 ```
 ```{r}
