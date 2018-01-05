@@ -6,18 +6,20 @@
 \usage{
 plotGeneDistribution(gene, bamDataFrame,
   geneData = SequencingExplainer::TAIR10_genes, range = 0,
-  genePart = "gene")
+  genePart = "gene", ...)
 }
 \arguments{
-\item{gene}{character with gene name}
+\item{gene}{Character with gene name}
 
-\item{bamDataFrame}{data frame converted to R using \code{bamToR()} function}
+\item{bamDataFrame}{Data frame converted to R using \code{bamToR()} function}
 
-\item{geneData}{ata frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
+\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
 
-\item{range}{how many nucleotide before \code{start} and after \code{stop} we include to genes}
+\item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes}
 
 \item{genePart}{The part of gene we want to visualize.}
+
+\item{...}{Optional arguments}
 }
 \description{
 Plot of distribution on selected gene

@@ -4,7 +4,7 @@
 \alias{plotCoverage}
 \title{plotCoverage}
 \usage{
-plotCoverage(bamDataFrame, chromosome, start, stop, ...)
+plotCoverage(bamDataFrame, chromosome, start, stop, type = "histogram", ...)
 }
 \arguments{
 \item{bamDataFrame}{Data frame converted to R using \code{bamToR()} function}
@@ -14,6 +14,8 @@ plotCoverage(bamDataFrame, chromosome, start, stop, ...)
 \item{start}{First position in gene/exon/three prime utr etc.}
 
 \item{stop}{Last position in gene/exon/three prime utr etc.}
+
+\item{type}{Type of the plot, by default \code{histogram}}
 
 \item{...}{Optional arguments}
 }
