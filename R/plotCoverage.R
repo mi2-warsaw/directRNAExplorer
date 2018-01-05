@@ -2,12 +2,17 @@
 #'
 #'@title plotCoverage
 #'
-#'@param bamDataFrame Data frame converted to R using \code{bamToR()} function
-#'@param chromosome Number of chosen chromosome
+#'@param bamDataFrame Data frame converted to R using \code{bamToR()} function.
+#'@param chromosome Number of chosen chromosome.
 #'@param start First position in gene/exon/three prime utr etc.
 #'@param stop Last position in gene/exon/three prime utr etc.
-#'@param type Type of the plot, by default \code{histogram}
-#'@param ... Optional arguments
+#'@param type Type of the plot, by default \code{histogram}.
+#'@param ... Optional arguments.
+#'
+#'@examples
+#'library(SequencingExplainer)
+#'data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
+#'plotCoverage(data, chromosome = 1, start =2002610 , stop = 2004510)
 #'
 #'@importFrom ggplot2 ggplot geom_histogram theme_bw ggplotGrob aes theme element_blank labs ylab scale_y_reverse xlim geom_density
 #'@importFrom grid grid.newpage grid.draw
@@ -68,4 +73,5 @@ plotCoverage <- function(bamDataFrame, chromosome,start, stop, type="histogram",
 
   grid.newpage()
   grid.draw(rbind(ggplotGrob(plot1), ggplotGrob(plot2), size = "last"))
+  invisible(rbind(ggplotGrob(plot1), ggplotGrob(plot2), size = "last"))
   }

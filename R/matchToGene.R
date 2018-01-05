@@ -2,12 +2,17 @@
 #'
 #'@title matchToGene
 #'
-#'@param positions positions from sequencing
-#'@param start gene start index
-#'@param stop gene stop index
-#'@param geneName gene name
-#'@param range how many nucleotide before \code{start} and after \code{stop} we include to genes
+#'@param positions Positions from sequencing.
+#'@param start Gene start index.
+#'@param stop Gene stop index.
+#'@param geneName Gene name.
+#'@param range How many nucleotide before \code{start} and after \code{stop} we include to genes.
 #'
+#'@examples
+#'library(SequencingExplainer)
+#'data <- dataChromosome1
+#'dic <- TAIR10_genes
+#'matchToGene(positions=unique(data$pos), start=dic$V4, stop=dic$V5, geneName=dic$id)
 #'
 #'@importFrom dplyr between
 #'@export

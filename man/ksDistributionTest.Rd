@@ -13,14 +13,21 @@ ksDistributionTest(data1, data2, gene,
 
 \item{data2}{Second data set which contains informations about selected gene.}
 
-\item{gene}{Gene name}
+\item{gene}{Gene name.}
 
-\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
+\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.}
 
-\item{strand}{On which strand we want to compute test}
+\item{strand}{On which strand we want to compute test.}
 
 \item{genePart}{The part of gene we want to test. By default we conduct test for whole gene.}
 }
 \description{
 Kolmogorov-Smirnov test for gene from two datasets
+}
+\examples{
+library(SequencingExplainer)
+databrm <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
+datawt <- dataChromosome1[dataChromosome1$pos >2002000 & dataChromosome1$pos < 2018000,]
+ksDistributionTest(databrm, datawt, gene = "AT1G06560")
+
 }

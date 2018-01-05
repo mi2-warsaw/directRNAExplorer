@@ -20,3 +20,9 @@ genesSummarize(bamDataFrame,
 \description{
 Function genesSumarize counts the coverage of each gene
 }
+\examples{
+library(SequencingExplainer)
+data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
+genesSummarize(data)
+
+}

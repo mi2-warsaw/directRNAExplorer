@@ -9,18 +9,24 @@ plotGeneDistribution(gene, bamDataFrame,
   genePart = "gene", ...)
 }
 \arguments{
-\item{gene}{Character with gene name}
+\item{gene}{Character with gene name.}
 
-\item{bamDataFrame}{Data frame converted to R using \code{bamToR()} function}
+\item{bamDataFrame}{Data frame converted to R using \code{bamToR()} function.}
 
-\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
+\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.}
 
-\item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes}
+\item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes.}
 
 \item{genePart}{The part of gene we want to visualize.}
 
-\item{...}{Optional arguments}
+\item{...}{Optional arguments.}
 }
 \description{
 Plot of distribution on selected gene
+}
+\examples{
+library(SequencingExplainer)
+data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
+plotGeneDistribution("AT1G06560", data, genePart="three_prime_UTR")
+
 }

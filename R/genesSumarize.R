@@ -7,6 +7,11 @@
 #'@param chromosome optional, number of chromosome
 #'@param range how many nucleotide before \code{start} and after \code{stop} we include to genes
 #'
+#'@examples
+#'library(SequencingExplainer)
+#'data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
+#'genesSummarize(data)
+#'
 #'@importFrom dplyr filter
 #'@importFrom tidyr separate
 #'

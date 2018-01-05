@@ -1,4 +1,4 @@
-context("check input")
+context("Check input")
 
 x <- c(1,2,3,4)
 

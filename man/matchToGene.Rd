@@ -7,16 +7,23 @@
 matchToGene(positions, start, stop, geneName, range = 0)
 }
 \arguments{
-\item{positions}{positions from sequencing}
+\item{positions}{Positions from sequencing.}
 
-\item{start}{gene start index}
+\item{start}{Gene start index.}
 
-\item{stop}{gene stop index}
+\item{stop}{Gene stop index.}
 
-\item{geneName}{gene name}
+\item{geneName}{Gene name.}
 
-\item{range}{how many nucleotide before \code{start} and after \code{stop} we include to genes}
+\item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes.}
 }
 \description{
 Counts how many sequencing points were at known genes
+}
+\examples{
+library(SequencingExplainer)
+data <- dataChromosome1
+dic <- TAIR10_genes
+matchToGene(positions=unique(data$pos), start=dic$V4, stop=dic$V5, geneName=dic$id)
+
 }

@@ -4,11 +4,16 @@
 #'
 #'@param data1 First data set which contains informations about selected gene.
 #'@param data2 Second data set which contains informations about selected gene.
-#'@param gene Gene name
-#'@param geneData Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}
-#'@param strand On which strand we want to compute test
+#'@param gene Gene name.
+#'@param geneData Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.
+#'@param strand On which strand we want to compute test.
 #'@param genePart The part of gene we want to test. By default we conduct test for whole gene.
 #'
+#'@examples
+#'library(SequencingExplainer)
+#'databrm <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
+#'datawt <- dataChromosome1[dataChromosome1$pos >2002000 & dataChromosome1$pos < 2018000,]
+#'ksDistributionTest(databrm, datawt, gene = "AT1G06560")
 #'
 #'@importFrom dplyr filter
 #'@importFrom stats ks.test
