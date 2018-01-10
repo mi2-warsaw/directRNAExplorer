@@ -21,7 +21,7 @@ plotGeneComparisonDistribution(gene, data1, data2,
 
 \item{genePart}{The part of gene we want to visualize.}
 
-\item{adjust}{Adjust parameter for the density kernel}
+\item{adjust}{A multiplicate bandwidth adjustment.}
 
 \item{...}{Optional arguments.}
 }

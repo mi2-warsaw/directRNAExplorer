@@ -46,7 +46,7 @@ head(datawt)
 ```
 
 ```{r}
-genesSummary <- genesSummarize(datawt)
+genesSummary <- genesSummarize(datawt, chromosome = 1)
 genesSummary <- dplyr::arrange(genesSummary, desc(counts))
 
 head(genesSummary)
@@ -77,3 +77,13 @@ plotGeneDistribution(gene="AT1G06680", bamDataFrame=datawt)
 plotGeneDistribution(gene="AT1G06680", bamDataFrame=databrm)
 
 ```
+
+
+We can also see the distribution of these two samples on one plot.
+
+```{r, fig.width=7}
+plotGeneComparisonDistribution("AT1G06680", datawt, databrm, genePart = "three_prime_UTR")
+
+```
+
+In this case red color lines correspond to data from first dataset and blue - to second. 

@@ -8,12 +8,13 @@
 #'@param geneData Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.
 #'@param range How many nucleotide before \code{start} and after \code{stop} we include to genes.
 #'@param genePart The part of gene we want to visualize.
-#'@param adjust Adjust parameter for the density kernel
+#'@param adjust A multiplicate bandwidth adjustment.
 #'@param ... Optional arguments.
 #'
 #'@importFrom dplyr filter
 #'@importFrom tidyr separate
-#'
+#'@importFrom ggplot2 ggplot scale_fill_manual theme_bw ggplotGrob aes theme element_blank labs ylab scale_y_reverse xlim geom_density
+#'@importFrom grid grid.newpage grid.draw
 #' @export
 
 
@@ -82,12 +83,12 @@ plotGeneComparisonDistribution <- function(gene, data1, data2, geneData=Sequenci
 
   
     plot1 <- ggplot(data = posStrand1 , aes(position))+
-      geom_density(col="#CC0033",stat="density", adjust = adjust)+
-      geom_density(data = posStrand2,col="#3300CC", stat="density", adjust = adjust)
+      geom_density(col="#CC0033",stat="density", adjust = adjust, show_guide=TRUE)+
+      geom_density(data = posStrand2,col="#3300CC", stat="density", adjust = adjust, show_guide=TRUE)
     
     plot2 <- ggplot(data = negStrand1 , aes(position))+
-      geom_density(col="#CC3300",stat="density", adjust = adjust)+
-      geom_density(data = negStrand2,col="#0033CC", stat="density", adjust = adjust)
+      geom_density(col="#CC3300",stat="density", adjust = adjust, show_guide=TRUE)+
+      geom_density(data = negStrand2,col="#0033CC", stat="density", adjust = adjust, show_guide=TRUE)
     
 
   
