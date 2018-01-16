@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/mi2-warsaw/sequencingExplainer.svg?branch=master)](https://travis-ci.org/mi2-warsaw/sequencingExplainer)
-[![Github Issues](http://githubbadges.herokuapp.com/mi2-warsaw/sequencingExplainer/issues.svg)](https://github.com//mi2-warsaw/sequencingExplainer/issues)
+[![Build Status](https://travis-ci.org/mi2-warsaw/directRNAExplorer.svg?branch=master)](https://travis-ci.org/mi2-warsaw/directRNAExplorer)
+[![Github Issues](http://githubbadges.herokuapp.com/mi2-warsaw/directRNAExplorer/issues.svg)](https://github.com//mi2-warsaw/directRNAExplorer/issues)
 
-# SequencingExplainer
+# directRNAExplorer
 
 An R package for analyzing and visualisation the sequencing data. 
 Main functionalities:
@@ -10,4 +10,4 @@ Main functionalities:
  * visualisations of genes coverage
   
 # Vignettes
-The short introduction to package `SequencingExplainer` can be found [here](http://rawgit.com/mi2-warsaw/sequencingExplainer/master/vignettes/Package_presentation.html).
+The short introduction to package `directRNAExplorer` can be found [here](http://rawgit.com/mi2-warsaw/directRNAExplorer/master/vignettes/Package_presentation.html).
