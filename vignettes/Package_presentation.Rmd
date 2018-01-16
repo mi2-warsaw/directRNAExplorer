@@ -1,5 +1,5 @@
 ---
-title: "sequencingExplainer - functionalities"
+title: "directRNAExplorer - functionalities"
 author: "Aleksandra Grudziaz"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -25,7 +25,7 @@ For conversion from .bam format to .rda we can use the `bamToR()` function. This
 
 ```{r}
 library(Rsamtools)
-library(SequencingExplainer)
+library(directRNAExplorer)
 ```
 ```{r, eval = F}
 bamData <- bamToR("P13.2016-11-17T16_40_36.1234062861011.fc1.ch1.sorted.bam")
