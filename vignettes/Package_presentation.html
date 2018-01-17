@@ -12,9 +12,9 @@
 
 <meta name="author" content="Aleksandra Grudziaz" />
 
-<meta name="date" content="2018-01-10" />
+<meta name="date" content="2018-01-17" />
 
-<title>sequencingExplainer - functionalities</title>
+<title>directRNAExplorer - functionalities</title>
 
 
 
@@ -68,9 +68,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<h1 class="title toc-ignore">sequencingExplainer - functionalities</h1>
+<h1 class="title toc-ignore">directRNAExplorer - functionalities</h1>
 <h4 class="author"><em>Aleksandra Grudziaz</em></h4>
-<h4 class="date"><em>2018-01-10</em></h4>
+<h4 class="date"><em>2018-01-17</em></h4>
 
 
 
@@ -78,7 +78,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>.bam to .rda conversion</h2>
 <p>For conversion from .bam format to .rda we can use the <code>bamToR()</code> function. This function uses a Rsamtools package from the Bioconductor, so we have to load this package before.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(Rsamtools)
-<span class="kw">library</span>(SequencingExplainer)</code></pre></div>
+<span class="kw">library</span>(directRNAExplorer)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bamData &lt;-<span class="st"> </span><span class="kw">bamToR</span>(<span class="st">&quot;P13.2016-11-17T16_40_36.1234062861011.fc1.ch1.sorted.bam&quot;</span>)</code></pre></div>
 <p>We have to remember that we should set path to a directory containing this bam file.</p>
 </div>
