@@ -9,7 +9,7 @@
 #'@param range How many nucleotide before \code{start} and after \code{stop} we include to genes.
 #'
 #'@examples
-#'library(SequencingExplainer)
+#'library(directRNAExplorer)
 #'data <- dataChromosome1
 #'dic <- TAIR10_genes
 #'matchToGene(positions=unique(data$pos), start=dic$V4, stop=dic$V5, geneName=dic$id)

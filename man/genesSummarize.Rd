@@ -4,24 +4,25 @@
 \alias{genesSummarize}
 \title{genesSumarize}
 \usage{
-genesSummarize(bamDataFrame,
-  geneData = SequencingExplainer::TAIR10_genes_tidy, chromosome = NULL,
-  range = 0)
+genesSummarize(bamDataFrame, geneData = directRNAExplorer::TAIR10_genes_tidy,
+  chromosome = NULL, range = 0, strand = "both")
 }
 \arguments{
-\item{bamDataFrame}{data frame converted to R using \code{bamToR()} function}
+\item{bamDataFrame}{Data frame converted to R using \code{bamToR()} function}
 
-\item{geneData}{data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
+\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes_tidy}}
 
-\item{chromosome}{optional, number of chromosome}
+\item{chromosome}{Optional, number of chromosome}
 
-\item{range}{how many nucleotide before \code{start} and after \code{stop} we include to genes}
+\item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes}
+
+\item{strand}{On which strand we want to compute test.}
 }
 \description{
 Function genesSumarize counts the coverage of each gene
 }
 \examples{
-library(SequencingExplainer)
+library(directRNAExplorer)
 data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
 genesSummarize(data)
 

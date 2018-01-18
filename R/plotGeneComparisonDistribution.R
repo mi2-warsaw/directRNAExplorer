@@ -9,17 +9,18 @@
 #'@param range How many nucleotide before \code{start} and after \code{stop} we include to genes.
 #'@param genePart The part of gene we want to visualize.
 #'@param adjust A multiplicate bandwidth adjustment.
+#'@param stat A type of plot.
 #'@param ... Optional arguments.
 #'
 #'@importFrom dplyr filter
 #'@importFrom tidyr separate
-#'@importFrom ggplot2 ggplot scale_fill_manual theme_bw ggplotGrob aes theme element_blank labs ylab scale_y_reverse xlim geom_density
+#'@importFrom ggplot2 ggplot scale_fill_manual theme_bw ggplotGrob aes theme element_blank labs ylab scale_y_reverse xlim stat_ecdf
 #'@importFrom grid grid.newpage grid.draw
 #' @export
 
 
-plotGeneComparisonDistribution <- function(gene, data1, data2, geneData=SequencingExplainer::TAIR10_genes, range=0, genePart="gene", adjust = 1,...){
-  pos<-id<-V4<-V5<-V3 <- NULL
+plotGeneComparisonDistribution <- function(gene, data1, data2, geneData=directRNAExplorer::TAIR10_genes, range=0, genePart="gene", adjust = 1, stat="density",...){
+  pos<-id<-V4<-V5<-V3<-position<-type <- NULL
   geneInfo <- filter(geneData, id==gene)
   geneInfo <- filter(geneInfo, V3==genePart)
   if(dim(geneInfo)[1]>1){
@@ -80,16 +81,38 @@ plotGeneComparisonDistribution <- function(gene, data1, data2, geneData=Sequenci
   
   range <- c(startPosition, endPosition)
   
-
+  if(stat=="density"){
   
     plot1 <- ggplot(data = posStrand1 , aes(position))+
       geom_density(col="#CC0033",stat="density", adjust = adjust, show_guide=TRUE)+
       geom_density(data = posStrand2,col="#3300CC", stat="density", adjust = adjust, show_guide=TRUE)
     
     plot2 <- ggplot(data = negStrand1 , aes(position))+
-      geom_density(col="#CC3300",stat="density", adjust = adjust, show_guide=TRUE)+
-      geom_density(data = negStrand2,col="#0033CC", stat="density", adjust = adjust, show_guide=TRUE)
+      geom_density(col="#CC3300",stat="density", adjust = adjust, show.legend=TRUE)+
+      geom_density(data = negStrand2,col="#0033CC", stat="density", adjust = adjust, show.legend=TRUE)
+  }
+  
+  if(stat=="ecdf"){
+    if(dim(posStrand1)[1]==0){
+      dfPos <- data.frame(type = "type 2", position = posStrand2)
+    }else if(dim(posStrand2)[1]==0){
+      dfPos <- data.frame(type = "type 1", position = posStrand1)
+    }else{
+    dfPos <- rbind(data.frame(type = "type 1", position = posStrand1), data.frame(type = "type 2", position = posStrand2))
+    }
     
+    if(dim(negStrand1)[1]==0){
+      dfNeg <- data.frame(type = "type 2", position = negStrand2)
+    }else if(dim(negStrand2)[1]==0){
+      dfNeg <- data.frame(type = "type 1", position = negStrand1)
+    }else{
+    dfNeg <- rbind(data.frame(type = "type 1", position = negStrand1), data.frame(type = "type 2", position = negStrand2))
+    }
+    
+    plot1 <- ggplot(dfPos, aes(position, col=type))+stat_ecdf()+scale_fill_manual(values = c("#CC0033", "#CC3300"))
+    plot2 <- ggplot(dfNeg, aes(position, col=type))+stat_ecdf()+scale_fill_manual(values = c("#3300CC", "#0033CC"))
+    
+  }
 
   
   

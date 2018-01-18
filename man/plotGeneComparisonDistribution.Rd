@@ -5,8 +5,8 @@
 \title{plotGeneComparisonDistribution}
 \usage{
 plotGeneComparisonDistribution(gene, data1, data2,
-  geneData = SequencingExplainer::TAIR10_genes, range = 0,
-  genePart = "gene", adjust = 1, ...)
+  geneData = directRNAExplorer::TAIR10_genes, range = 0,
+  genePart = "gene", adjust = 1, stat = "density", ...)
 }
 \arguments{
 \item{gene}{Character with gene name.}
@@ -22,6 +22,8 @@ plotGeneComparisonDistribution(gene, data1, data2,
 \item{genePart}{The part of gene we want to visualize.}
 
 \item{adjust}{A multiplicate bandwidth adjustment.}
+
+\item{stat}{A type of plot.}
 
 \item{...}{Optional arguments.}
 }

@@ -10,7 +10,7 @@
 #'@param genePart The part of gene we want to test. By default we conduct test for whole gene.
 #'
 #'@examples
-#'library(SequencingExplainer)
+#'library(directRNAExplorer)
 #'databrm <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
 #'datawt <- dataChromosome1[dataChromosome1$pos >2002000 & dataChromosome1$pos < 2018000,]
 #'ksDistributionTest(databrm, datawt, gene = "AT1G06560")
@@ -34,9 +34,9 @@ ksDistributionTest <- function(data1, data2, gene, geneData = SequencingExplaine
   }
   
   geneRange <- c(startPosition, endPosition)
-  if((geneRange[1]<min(data1$pos) || geneRange[2]>max(data1$pos)) || (geneRange[1]<min(data2$pos) || geneRange[2]>max(data2$pos))){
-    stop("Your data sets don't contain selected gene")
-  }
+ # if((geneRange[1]<min(data1$pos) || geneRange[2]>max(data1$pos)) || (geneRange[1]<min(data2$pos) || geneRange[2]>max(data2$pos))){
+#    stop("Your data sets don't contain selected gene")
+ # }
   
   data1 <- data1[data1$pos>=geneRange[1] & data1$pos<=geneRange[2],]
   data2 <- data2[data2$pos>=geneRange[1] & data2$pos<=geneRange[2],]

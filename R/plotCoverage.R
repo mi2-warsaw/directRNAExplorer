@@ -10,7 +10,7 @@
 #'@param ... Optional arguments.
 #'
 #'@examples
-#'library(SequencingExplainer)
+#'library(directRNAExplorer)
 #'data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
 #'plotCoverage(data, chromosome = 1, start =2002610 , stop = 2004510)
 #'
@@ -51,6 +51,7 @@ plotCoverage <- function(bamDataFrame, chromosome,start, stop, type="histogram",
       geom_density(col="red", fill="red",stat="density")
     
   }
+
     
     
   plot1 <- plot1  +

@@ -13,7 +13,7 @@
 #'@importFrom tidyr separate
 #'
 #'@examples
-#'library(SequencingExplainer)
+#'library(directRNAExplorer)
 #'data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
 #'plotGeneDistribution("AT1G06560", data, genePart="three_prime_UTR")
 #'

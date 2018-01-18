@@ -21,7 +21,7 @@ matchToGene(positions, start, stop, geneName, range = 0)
 Counts how many sequencing points were at known genes
 }
 \examples{
-library(SequencingExplainer)
+library(directRNAExplorer)
 data <- dataChromosome1
 dic <- TAIR10_genes
 matchToGene(positions=unique(data$pos), start=dic$V4, stop=dic$V5, geneName=dic$id)

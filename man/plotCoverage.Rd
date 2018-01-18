@@ -23,7 +23,7 @@ plotCoverage(bamDataFrame, chromosome, start, stop, type = "histogram", ...)
 Coverage plot for chosen part of RNA sequence
 }
 \examples{
-library(SequencingExplainer)
+library(directRNAExplorer)
 data <- brmDataChromosome1[brmDataChromosome1$pos >2002000 & brmDataChromosome1$pos < 2018000,]
 plotCoverage(data, chromosome = 1, start =2002610 , stop = 2004510)
 

@@ -1,4 +1,4 @@
 library(testthat)
-library(SequencingExplainer)
+library(directRNAExplorer)
 
-test_check("SequencingExplainer")
+test_check("directRNAExplorer")
