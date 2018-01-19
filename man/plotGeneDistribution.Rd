@@ -5,7 +5,7 @@
 \title{plotGeneDistribution}
 \usage{
 plotGeneDistribution(gene, bamDataFrame,
-  geneData = SequencingExplainer::TAIR10_genes, range = 0,
+  geneData = directRNAExplorer::TAIR10_genes, range = 0,
   genePart = "gene", ...)
 }
 \arguments{

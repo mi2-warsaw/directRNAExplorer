@@ -21,7 +21,7 @@
 #'@export
 
 
-ksDistributionTest <- function(data1, data2, gene, geneData = SequencingExplainer::TAIR10_genes, strand="pos", genePart="gene"){
+ksDistributionTest <- function(data1, data2, gene, geneData = directRNAExplorer::TAIR10_genes, strand="pos", genePart="gene"){
   id<-V4<-V5<-V3 <- NULL
   geneInfo <- filter(geneData, id==gene)
   geneInfo <- filter(geneInfo, V3==genePart)

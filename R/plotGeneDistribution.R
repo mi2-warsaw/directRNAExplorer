@@ -19,7 +19,7 @@
 #'
 #'@export
 
-plotGeneDistribution <- function(gene, bamDataFrame, geneData=SequencingExplainer::TAIR10_genes, range=0, genePart="gene", ...){
+plotGeneDistribution <- function(gene, bamDataFrame, geneData=directRNAExplorer::TAIR10_genes, range=0, genePart="gene", ...){
   pos<-id<-V4<-V5<-V3 <- NULL
   geneInfo <- filter(geneData, id==gene)
   geneInfo <- filter(geneInfo, V3==genePart)
