@@ -27,10 +27,12 @@ pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR
   genes <- unique(geneData2$id)
   
   
-  result <- data.frame(gene = genes, pval=0)
+  result <- data.frame(gene = genes, pval=0, statistic=0)
   if(type=="KS"){
     for (i in 1:length(genes)){
-      result[i,2] <- ksDistributionTest(data1,data2,result[i,1], genePart = genePart)$p.value
+      test <- ksDistributionTest(data1,data2,result[i,1], genePart = genePart)
+      result[i,2] <- test$p.value
+      result[i,3] <- test$statistic
     }
   }
   return(result)

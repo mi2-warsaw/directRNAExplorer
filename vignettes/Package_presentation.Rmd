@@ -59,7 +59,7 @@ We can compare the distribution of counts between two genes or part of the gene 
 In next example I will use the data for gene "AT1G06680".
 
 ```{r}
-ksDistributionTest(datawt, databrm, "AT1G06680", genePart = "three_prime_UTR", strand="neg")
+ksDistributionTest(datawt, databrm, "AT1G06760", genePart = "three_prime_UTR", strand="neg")
 ```
 
 ## Coverage plot
@@ -86,4 +86,17 @@ plotGeneComparisonDistribution("AT1G06680", datawt, databrm, genePart = "three_p
 
 ```
 
+
+
 In this case red color lines correspond to data from first dataset and blue - to second. 
+
+
+
+We can also see the ecdf of these two samples on one plot.
+
+```{r, fig.width=7}
+plotGeneComparisonDistribution("AT1G06680", datawt, databrm, genePart = "three_prime_UTR", stat="ecdf")
+
+```
+
+
