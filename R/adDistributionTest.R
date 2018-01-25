@@ -38,13 +38,15 @@ adDistributionTest <- function(data1, data2, gene, geneData = directRNAExplorer:
   if(strand=="pos"){
     posStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="pos")
     posStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="pos")
-    return(ad.test(posStrandData1$Freq, posStrandData2$Freq))
+    adTestResult <- ad.test(posStrandData1$Freq, posStrandData2$Freq, dist = FALSE)
+    return(adTestResult)
   }
   
   if(strand=="neg"){
     negStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="neg")
     negStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="neg")
-    return(ad.test(negStrandData1$Freq, negStrandData2$Freq))
+    adTestResultNeg <- ad.test(posStrandData1$Freq, posStrandData2$Freq, dist = FALSE)
+    return(adTestResultNeg)
   }
   
   if(strand=="both"){
@@ -52,7 +54,9 @@ adDistributionTest <- function(data1, data2, gene, geneData = directRNAExplorer:
     posStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="pos")
     negStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="neg")
     negStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="neg")
-    return(list(ad.test(posStrandData1$Freq, posStrandData2$Freq), ad.test(negStrandData1$Freq, negStrandData2$Freq)))
+    adTestResult <- ad.test(posStrandData1$Freq, posStrandData2$Freq, dist = FALSE)
+    adTestResultNeg <- ad.test(negStrandData1$Freq, negStrandData2$Freq, dist = FALSE)
+    return(list(adTestResult, adTestResultNeg))
   }else{
     stop("You must set the strand argument")
   }

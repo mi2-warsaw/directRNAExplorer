@@ -14,7 +14,7 @@
 #'
 #'@importFrom dplyr filter
 #'@importFrom tidyr separate
-#'@importFrom ggplot2 ggplot scale_fill_manual theme_bw ggplotGrob aes theme element_blank labs ylab scale_y_reverse xlim stat_ecdf
+#'@importFrom ggplot2 ggplot scale_fill_manual theme_bw ggplotGrob aes theme element_blank labs ylab scale_y_reverse xlim stat_ecdf scale_color_manual
 #'@importFrom grid grid.newpage grid.draw
 #' @export
 
@@ -85,7 +85,7 @@ plotGeneComparisonDistribution <- function(gene, data1, data2, geneData=directRN
   
     plot1 <- ggplot(data = posStrand1 , aes(position))+
       geom_density(col="#CC0033",stat="density", adjust = adjust, show_guide=TRUE)+
-      geom_density(data = posStrand2,col="#3300CC", stat="density", adjust = adjust, show_guide=TRUE)
+      geom_density(data = posStrand2,col="#3300CC", stat="density", adjust = adjust, show.legend=TRUE)
     
     plot2 <- ggplot(data = negStrand1 , aes(position))+
       geom_density(col="#CC3300",stat="density", adjust = adjust, show.legend=TRUE)+
@@ -109,8 +109,8 @@ plotGeneComparisonDistribution <- function(gene, data1, data2, geneData=directRN
     dfNeg <- rbind(data.frame(type = "type 1", position = negStrand1), data.frame(type = "type 2", position = negStrand2))
     }
     
-    plot1 <- ggplot(dfPos, aes(position, col=type))+stat_ecdf()+scale_fill_manual(values = c("#CC0033", "#CC3300"))
-    plot2 <- ggplot(dfNeg, aes(position, col=type))+stat_ecdf()+scale_fill_manual(values = c("#3300CC", "#0033CC"))
+    plot1 <- ggplot(dfPos, aes(position, col=type))+stat_ecdf(show.legend=TRUE)+scale_color_manual(values=c("#CC0033", "#3300CC"))#scale_color_manual(values = c("#CC0033", "#CC3300"))
+    plot2 <- ggplot(dfNeg, aes(position, col=type))+stat_ecdf(show.legend=TRUE)+scale_color_manual(values=c("#CC3300", "#0033CC"))#scale_color_manual(values = c("#3300CC", "#0033CC"))
     
   }
 

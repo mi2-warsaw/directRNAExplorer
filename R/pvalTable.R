@@ -35,6 +35,16 @@ pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR
       result[i,3] <- test$statistic
     }
   }
+  
+  if(type=="AD"){
+    for (i in 1:length(genes)){
+      test <- adDistributionTest(data1,data2,result[i,1], genePart = genePart)
+      result[i,2] <- test$ad[2,3]
+      result[i,3] <- test$ad[2,1]
+    }
+  }
+  
+  
   return(result)
   
 }

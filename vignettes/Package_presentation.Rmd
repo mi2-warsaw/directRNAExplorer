@@ -55,26 +55,37 @@ head(genesSummary)
 
 ## Comparision between two groups
 
-We can compare the distribution of counts between two genes or part of the gene (for example three prime UTR, exons). We also can compare distributions between positive or negative strands. We use for this comparision the two-sample Kolmogorov-Smirnov test.
+We can compare the distribution of counts between two genes or part of the gene (for example three prime UTR, exons). We also can compare distributions between positive or negative strands. We can use for this comparision for example the two-sample Kolmogorov-Smirnov test.
 In next example I will use the data for gene "AT1G06680".
 
 ```{r}
-ksDistributionTest(datawt, databrm, "AT1G06760", genePart = "three_prime_UTR", strand="neg")
+ksDistributionTest(datawt, databrm, "AT1G06760", strand="neg")
 ```
 
+
+For selected parts of chromosomes in two groups we can compute the table with p-values for chosen test about their distributions.
+
+```{r}
+table <- pvalTable(datawt, databrm, chromosome="1", type ="KS")
+head(dplyr::arrange(table, pval),6)
+```
+```{r}
+#table <- pvalTable(datawt, databrm, chromosome="1", type ="AD")
+#dplyr::arrange(table, pval)
+```
 ## Coverage plot
 
 For chosen gene we can draw a coverage plot for `datawt` and `databrm`.
 First we have plots for the three prime UTR.
 ```{r, fig.width=7}
-plotGeneDistribution(gene="AT1G06680", bamDataFrame=datawt, genePart = "three_prime_UTR")
-plotGeneDistribution(gene="AT1G06680", bamDataFrame=databrm, genePart = "three_prime_UTR")
+plotGeneDistribution(gene="AT1G06760", bamDataFrame=datawt)
+plotGeneDistribution(gene="AT1G06760", bamDataFrame=databrm)
 ```
 
 And plots for whole gene.
 ```{r, fig.width=7}
-plotGeneDistribution(gene="AT1G06680", bamDataFrame=datawt)
-plotGeneDistribution(gene="AT1G06680", bamDataFrame=databrm)
+plotGeneDistribution(gene="AT1G06760", bamDataFrame=datawt)
+plotGeneDistribution(gene="AT1G06760", bamDataFrame=databrm)
 
 ```
 
@@ -82,7 +93,7 @@ plotGeneDistribution(gene="AT1G06680", bamDataFrame=databrm)
 We can also see the distribution of these two samples on one plot.
 
 ```{r, fig.width=7}
-plotGeneComparisonDistribution("AT1G06680", datawt, databrm, genePart = "three_prime_UTR")
+plotGeneComparisonDistribution("AT1G06760", datawt, databrm)
 
 ```
 
@@ -95,7 +106,7 @@ In this case red color lines correspond to data from first dataset and blue - to
 We can also see the ecdf of these two samples on one plot.
 
 ```{r, fig.width=7}
-plotGeneComparisonDistribution("AT1G06680", datawt, databrm, genePart = "three_prime_UTR", stat="ecdf")
+plotGeneComparisonDistribution("AT1G06760", datawt, databrm,stat="ecdf")
 
 ```
 
