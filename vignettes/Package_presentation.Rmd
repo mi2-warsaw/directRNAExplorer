@@ -71,7 +71,7 @@ head(dplyr::arrange(table, pval),6)
 ```
 ```{r}
 #table <- pvalTable(datawt, databrm, chromosome="1", type ="AD")
-#dplyr::arrange(table, pval)
+#head(dplyr::arrange(table, pval),6)
 ```
 ## Coverage plot
 
