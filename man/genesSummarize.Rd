@@ -5,7 +5,7 @@
 \title{genesSumarize}
 \usage{
 genesSummarize(bamDataFrame, geneData = directRNAExplorer::TAIR10_genes_tidy,
-  chromosome = NULL, range = 0, strand = "both")
+  chromosome = NULL, range = 0, strand = "both", genePart = "gene")
 }
 \arguments{
 \item{bamDataFrame}{Data frame converted to R using \code{bamToR()} function}
@@ -17,6 +17,8 @@ genesSummarize(bamDataFrame, geneData = directRNAExplorer::TAIR10_genes_tidy,
 \item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes}
 
 \item{strand}{On which strand we want to compute test.}
+
+\item{genePart}{Part of gene on which we compute the summary}
 }
 \description{
 Function genesSumarize counts the coverage of each gene

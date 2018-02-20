@@ -69,10 +69,6 @@ For selected parts of chromosomes in two groups we can compute the table with p-
 table <- pvalTable(datawt, databrm, chromosome="1", type ="KS")
 head(dplyr::arrange(table, pval),6)
 ```
-```{r}
-#table <- pvalTable(datawt, databrm, chromosome="1", type ="AD")
-#head(dplyr::arrange(table, pval),6)
-```
 ## Coverage plot
 
 For chosen gene we can draw a coverage plot for `datawt` and `databrm`.
@@ -92,10 +88,9 @@ plotGeneDistribution(gene="AT1G06760", bamDataFrame=databrm)
 
 We can also see the distribution of these two samples on one plot.
 
-```{r, fig.width=7}
-plotGeneComparisonDistribution("AT1G06760", datawt, databrm)
-
-```
+# ```{r, fig.width=7}
+# plotGeneComparisonDistribution("AT1G06760", datawt, databrm)
+# ```
 
 
 

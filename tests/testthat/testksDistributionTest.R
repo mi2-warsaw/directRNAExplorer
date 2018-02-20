@@ -15,7 +15,6 @@ context("Check output")
 test_that("Output",{
   expect_is(ksDistributionTest(databrm, datawt, gene = "AT1G06560"), "htest")
   expect_length(ksDistributionTest(databrm, datawt, gene = "AT1G06560"),5)
-  expect_is(ksDistributionTest(databrm, datawt, gene = "AT1G06560", genePart = "three_prime_UTR", strand = "neg"),"htest")
   expect_is(ksDistributionTest(databrm, datawt, gene = "AT1G06560", genePart = "three_prime_UTR"),"htest")
   expect_length(ksDistributionTest(databrm, datawt, gene = "AT1G06560", genePart = "three_prime_UTR"),5)
 })

@@ -5,7 +5,7 @@
 \title{ksDistributionTest}
 \usage{
 ksDistributionTest(data1, data2, gene,
-  geneData = directRNAExplorer::TAIR10_genes, strand = "pos",
+  geneData = directRNAExplorer::TAIR10_genes, strand = "+",
   genePart = "gene")
 }
 \arguments{

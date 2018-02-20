@@ -1,5 +1,6 @@
 #'pvalTable
 #'
+#'Create data.frame with pvalues and value of statistic for chosen statistical test
 #'
 #'@param data1 First data set which contains informations about selected gene.
 #'@param data2 Second data set which contains informations about selected gene.
@@ -7,13 +8,14 @@
 #'@param geneData Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.
 #'@param type Type of chosen test
 #'@param genePart The part of gene we want to visualize.
+#'@param strand On which strand we want to compute test.
 #'@param ... Optional arguments
 #'
 #'@export
 
 
-pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR10_genes,  type="KS", genePart = "gene", ...){
-  V1<-V3<-V4<-V5<-NULL
+pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR10_genes,  type="KS", genePart = "gene",strand="+", ...){
+  V1<-V3<-V4<-V5<-rname <- NULL
   geneData$V1 <- factor(substr(geneData$V1, 4,4))
   geneData <- dplyr::filter(geneData, V1==chromosome)
   if(genePart!="gene"){
@@ -25,25 +27,17 @@ pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR
   geneData2 <- dplyr::filter(geneData, V4>rangeData[1] & V5<rangeData[2])
   
   genes <- unique(geneData2$id)
-  
+  data1 <- data1[data1$rname==chromosome, ]
+  data2 <- data2[data2$rname== chromosome, ]
   
   result <- data.frame(gene = genes, pval=0, statistic=0)
   if(type=="KS"){
     for (i in 1:length(genes)){
-      test <- ksDistributionTest(data1,data2,result[i,1], genePart = genePart)
+      test <- ksDistributionTest(data1,data2,result[i,1], genePart = genePart, strand=strand)
       result[i,2] <- test$p.value
       result[i,3] <- test$statistic
     }
   }
-  
-  if(type=="AD"){
-    for (i in 1:length(genes)){
-      test <- adDistributionTest(data1,data2,result[i,1], genePart = genePart)
-      result[i,2] <- test$ad[2,3]
-      result[i,3] <- test$ad[2,1]
-    }
-  }
-  
   
   return(result)
   

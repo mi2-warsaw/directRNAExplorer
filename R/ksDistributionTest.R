@@ -21,7 +21,7 @@
 #'@export
 
 
-ksDistributionTest <- function(data1, data2, gene, geneData = directRNAExplorer::TAIR10_genes, strand="pos", genePart="gene"){
+ksDistributionTest <- function(data1, data2, gene, geneData = directRNAExplorer::TAIR10_genes, strand="+", genePart="gene"){
   id<-V4<-V5<-V3 <- NULL
   geneInfo <- filter(geneData, id==gene)
   geneInfo <- filter(geneInfo, V3==genePart)
@@ -41,25 +41,30 @@ ksDistributionTest <- function(data1, data2, gene, geneData = directRNAExplorer:
   data1 <- data1[data1$pos>=geneRange[1] & data1$pos<=geneRange[2],]
   data2 <- data2[data2$pos>=geneRange[1] & data2$pos<=geneRange[2],]
   
-  if(strand=="pos"){
-    posStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="pos")
-    posStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="pos")
-  return(ks.test(posStrandData1$Freq, posStrandData2$Freq))
+  if(strand=="+"){
+    position <- c(data1$pos, data2$pos)
+    strand <- c(as.character(data1$strand), as.character(data2$strand))
+    condition <- c(rep("type1", length(data1$pos)), rep("type2", length(data2$pos)))
+    
+    dt <- data.frame(position, strand, condition)
+    dt_pos <- dplyr::filter(dt, strand == "+")
+    if(length(dt_pos[dt_pos$condition=="type1","position"])<2 || length(dt_pos[dt_pos$condition=="type2", "position"])<2){
+      return(data.frame(p.value=NA,statistic=NA))
+    }else{
+  return(ks.test(dt_pos[dt_pos$condition=="type1","position"], dt_pos[dt_pos$condition=="type2", "position"]))  
+    }
   }
-  
-  if(strand=="neg"){
-    negStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="neg")
-    negStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="neg")
-    return(ks.test(negStrandData1$Freq, negStrandData2$Freq))
+  if(strand=="-"){
+    position <- c(data1$pos, data2$pos)
+    strand <- c(as.character(data1$strand), as.character(data2$strand))
+    condition <- c(rep("type1", length(data1$pos)), rep("type2", length(data2$pos)))
+    
+    dt <- data.frame(position, strand, condition)
+    dt_neg <- dplyr::filter(dt, strand == "-")
+    if(length(dt_neg[dt_neg$condition=="type1","position"])<2 || length(dt_neg[dt_neg$condition=="type2", "position"])<2){
+      return(data.frame(p.value=NA,statistic=NA))
+    }else{
+    return(ks.test(dt_neg[dt_neg$condition=="type1","position"], dt_neg[dt_neg$condition=="type2", "position"]))
   }
-  
-  if(strand=="both"){
-    posStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="pos")
-    posStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="pos")
-    negStrandData1 <- countsInGene(data1, geneRange[1], geneRange[2], strand="neg")
-    negStrandData2 <- countsInGene(data2, geneRange[1], geneRange[2], strand="neg")
-    return(list(ks.test(posStrandData1$Freq, posStrandData2$Freq), ks.test(negStrandData1$Freq, negStrandData2$Freq)))
-  }else{
-    stop("You must set the strand argument")
-  }
+  } 
 }

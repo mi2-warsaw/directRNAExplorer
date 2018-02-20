@@ -6,7 +6,7 @@
 \usage{
 pvalTable(data1, data2, chromosome,
   geneData = directRNAExplorer::TAIR10_genes, type = "KS",
-  genePart = "gene", ...)
+  genePart = "gene", strand = "+", ...)
 }
 \arguments{
 \item{data1}{First data set which contains informations about selected gene.}
@@ -21,8 +21,10 @@ pvalTable(data1, data2, chromosome,
 
 \item{genePart}{The part of gene we want to visualize.}
 
+\item{strand}{On which strand we want to compute test.}
+
 \item{...}{Optional arguments}
 }
 \description{
-pvalTable
+Create data.frame with pvalues and value of statistic for chosen statistical test
 }

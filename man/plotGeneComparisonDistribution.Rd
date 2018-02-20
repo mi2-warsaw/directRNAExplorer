@@ -6,7 +6,7 @@
 \usage{
 plotGeneComparisonDistribution(gene, data1, data2,
   geneData = directRNAExplorer::TAIR10_genes, range = 0,
-  genePart = "gene", adjust = 1, stat = "density", ...)
+  genePart = "gene", adjust = 1, stat = "density", geneName = NULL, ...)
 }
 \arguments{
 \item{gene}{Character with gene name.}
@@ -24,6 +24,8 @@ plotGeneComparisonDistribution(gene, data1, data2,
 \item{adjust}{A multiplicate bandwidth adjustment.}
 
 \item{stat}{A type of plot.}
+
+\item{geneName}{A name of presented gene.}
 
 \item{...}{Optional arguments.}
 }

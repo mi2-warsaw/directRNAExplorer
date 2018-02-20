@@ -7,6 +7,7 @@
 #'@param chromosome Optional, number of chromosome
 #'@param range How many nucleotide before \code{start} and after \code{stop} we include to genes
 #'@param strand On which strand we want to compute test.
+#'@param genePart Part of gene on which we compute the summary
 #'
 #'@examples
 #'library(directRNAExplorer)
@@ -18,7 +19,7 @@
 #'
 #'@export
 
-genesSummarize <- function(bamDataFrame, geneData=directRNAExplorer::TAIR10_genes_tidy, chromosome=NULL, range=0, strand="both"){
+genesSummarize <- function(bamDataFrame, geneData=directRNAExplorer::TAIR10_genes_tidy, chromosome=NULL, range=0, strand="both", genePart="gene"){
   V1 <- NULL
   if(!is.null(chromosome)){
     geneData <- filter(geneData, V1==paste("Chr",chromosome, sep=""))
