@@ -4,10 +4,11 @@
 \alias{matchToGene}
 \title{matchToGene}
 \usage{
-matchToGene(positions, start, stop, geneName, range = 0)
+matchToGene(positions, start, stop, geneName, strandData, strand = "sense",
+  range = 0)
 }
 \arguments{
-\item{positions}{Positions from sequencing.}
+\item{positions}{Positions from sequencing and informations about strand.}
 
 \item{start}{Gene start index.}
 
@@ -15,15 +16,20 @@ matchToGene(positions, start, stop, geneName, range = 0)
 
 \item{geneName}{Gene name.}
 
+\item{strandData}{Vector with information that gene is on \code{sense} or \code{antisense} strand.}
+
+\item{strand}{On which strand we want to compute statistics, we can compute statistics on the \code{sense} or \code{antisense} strand.}
+
 \item{range}{How many nucleotide before \code{start} and after \code{stop} we include to genes.}
 }
 \description{
 Counts how many sequencing points were at known genes
 }
 \examples{
+\dontrun{
 library(directRNAExplorer)
 data <- dataChromosome1
 dic <- TAIR10_genes
 matchToGene(positions=unique(data$pos), start=dic$V4, stop=dic$V5, geneName=dic$id)
-
+}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/bamToR.R
 \name{bamToR}
 \alias{bamToR}
-\title{bamToRs}
+\title{bamToR}
 \usage{
 bamToR(filename)
 }

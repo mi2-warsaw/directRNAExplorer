@@ -8,13 +8,12 @@
 #'@param geneData Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.
 #'@param type Type of chosen test
 #'@param genePart The part of gene we want to visualize.
-#'@param strand On which strand we want to compute test.
 #'@param ... Optional arguments
 #'
 #'@export
 
 
-pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR10_genes,  type="KS", genePart = "gene",strand="+", ...){
+pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR10_genes,  type="KS", genePart = "gene", ...){
   V1<-V3<-V4<-V5<-rname <- NULL
   geneData$V1 <- factor(substr(geneData$V1, 4,4))
   geneData <- dplyr::filter(geneData, V1==chromosome)
@@ -33,7 +32,7 @@ pvalTable <- function(data1, data2, chromosome, geneData=directRNAExplorer::TAIR
   result <- data.frame(gene = genes, pval=0, statistic=0)
   if(type=="KS"){
     for (i in 1:length(genes)){
-      test <- ksDistributionTest(data1,data2,result[i,1], genePart = genePart, strand=strand)
+      test <- ksDistributionTest(data1,data2,result[i,1], genePart = genePart)
       result[i,2] <- test$p.value
       result[i,3] <- test$statistic
     }

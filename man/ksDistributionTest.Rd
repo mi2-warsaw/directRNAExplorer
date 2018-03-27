@@ -5,8 +5,7 @@
 \title{ksDistributionTest}
 \usage{
 ksDistributionTest(data1, data2, gene,
-  geneData = directRNAExplorer::TAIR10_genes, strand = "+",
-  genePart = "gene")
+  geneData = directRNAExplorer::TAIR10_genes, genePart = "gene")
 }
 \arguments{
 \item{data1}{First data set which contains informations about selected gene.}
@@ -15,9 +14,7 @@ ksDistributionTest(data1, data2, gene,
 
 \item{gene}{Gene name.}
 
-\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}.}
-
-\item{strand}{On which strand we want to compute test.}
+\item{geneData}{Data frame with positions of all genes and their names, by default we use a \code{TAIR10_genes}}
 
 \item{genePart}{The part of gene we want to test. By default we conduct test for whole gene.}
 }

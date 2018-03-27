@@ -1,9 +1,8 @@
 #'@description Converts .bam file into a R list
 #'
-#'@title bamToRs
+#'@title bamToR
 #'
 #'@param filename string contatinig name of file with bam data. Remember that you need to set path to folder with selected file.
-#'
 #'@importFrom Rsamtools scanBam
 #'
 #'@examples

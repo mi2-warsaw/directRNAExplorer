@@ -1,8 +1,8 @@
 Package: directRNAExplorer
-Title: What the Package Does (one line, title case)
+Title: Package directRNAExplorer is an R package for dealing with the RNA sequencing data.
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Aleksandra", "Grudziaz", email = "aleksandra.grudziaz@gmail.com", role = c("aut", "cre"))
+Description: Package processes, tests and visualizes the RNA sequencing data. We can convert .bam files to R .rda format, and then test differences between distributions of counts in individuals types. We can also test the differences in number of counts in genes using the negative binomial test. Then we can visualize the results of chosen test with the coverage, density plot or a histogram.
 Depends: R (>= 3.0.0), 
 	roxygen2
 Imports:
@@ -11,7 +11,8 @@ Imports:
 	ggplot2,
 	tidyr,
 	grid, 
-	DESeq2
+	DESeq2, 
+	limma
 License: GPL
 Encoding: UTF-8
 LazyData: true

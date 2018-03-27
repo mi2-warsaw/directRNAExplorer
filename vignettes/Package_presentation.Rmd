@@ -59,7 +59,7 @@ We can compare the distribution of counts between two genes or part of the gene 
 In next example I will use the data for gene "AT1G06680".
 
 ```{r}
-ksDistributionTest(datawt, databrm, "AT1G06760", strand="neg")
+ksDistributionTest(datawt, databrm, "AT1G06760")
 ```
 
 
@@ -105,4 +105,90 @@ plotGeneComparisonDistribution("AT1G06760", datawt, databrm,stat="ecdf")
 
 ```
 
+## Testing counts in genes
 
+For two types of individuals we can compute negative binomial test to find significantly changed genes between one and the other type.
+
+###Table of counts
+
+Firstly, we have to compute, from sequencing data, the table of counts for each gene from Arabidopsis. We can create this table using `countsForAllGenes` function.
+
+```{r, eval=FALSE}
+counts_genes_wt1 <- countsForAllGenes(dataChromosome1, geneData = directRNAExplorer::Araport11, genePart="gene")
+```
+
+###Testing
+
+To test differences between types of individuals we must compute at least two counts tables. One for the first type, and then for the second type. 
+I've create a table contains inforamation for two types -  wild type and a mutant type (brm). 
+We have seven samples in our test.
+
+```{r}
+allCounts <- directRNAExplorer::countsAll
+```
+
+
+###Choice of counts
+
+We want to test these genes which could be significant. Firstly, we should select genes which have "good number" of counts. 
+We assumed that the counts are "good" if more than at least 2 samples in the wt case and at least 3 samples in brm case we have more than 9 counts for gene. 
+In addition, we are looking for such genes that have many counts in one of the subtypes, and almost zero in the second one.
+
+```{r}
+genesTest <-c() 
+countsWithCondition <- allCounts
+
+
+for(i in 2:ncol(allCounts)){
+  countsWithCondition[,i] <- ifelse(allCounts[,i]>=9, 1, 0)
+}
+
+allCounts_2 <- countsWithCondition
+genes <- allCounts_2[,1]
+
+allCountsTransposed <- t(allCounts_2[,-1])
+allCountsTransposed <- data.frame(allCountsTransposed)
+colnames(allCountsTransposed)<- genes
+
+allCountsTransposed$type <- c(rep("wt", 3), rep("c", 4))
+allCountsTransposed <- allCountsTransposed[,c(ncol(allCountsTransposed), 1:(ncol(allCountsTransposed)-1))]
+
+sums <- aggregate(. ~ type, data=allCountsTransposed, FUN=sum)
+
+for(i in 2:ncol(allCountsTransposed)){
+  if(((sums[1,i]>=3) & (sums[2,i]>=2)) || ((sums[1,i]>=3) & (sums[2,i]==0))||((sums[1,i]==0) & (sums[2,i]>=2))){
+    genesTest[i] <- colnames(allCountsTransposed)[i] 
+  }else{
+    genesTest[i] <- NA
+  }
+}
+
+genesTest2<- na.omit(genesTest)
+
+countsTest <- allCounts
+countsTest <- countsTest[which(countsTest$name %in% genesTest2),]
+
+countsTest2 <- data.frame(t(countsTest[,-1]))
+colnames(countsTest2) <- countsTest$name
+
+```
+
+###nbinom test
+
+For selected genes we perform a binomial negative test, in order to find genes for which the number of readings has changed significantly divided into two groups - wt and brm.
+
+```{r}
+cond  <- c(rep("wt", 3), rep("c", 4))
+test<-nbinomTest(countsTest2, condition = cond)
+```
+
+To find the most changed genes, we will focus only on those that have a small pint and fold greater than 1.5.
+```{r}
+library(dplyr)
+testFiltered <- filter(test, pvalue<0.05)
+testFiltered <- filter(testFiltered, abs(log2FoldChange)>0.6)
+testFiltered <- arrange(testFiltered, pvalue)
+testFiltered <- arrange(testFiltered, desc(log2FoldChange))
+
+head(testFiltered)
+```
