@@ -223,7 +223,7 @@ countsTest2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<sp
 <p>For selected genes we perform a binomial negative test, in order to find genes for which the number of readings has changed significantly divided into two groups - wt and brm.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cond  &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;wt&quot;</span>, <span class="dv">3</span>), <span class="kw">rep</span>(<span class="st">&quot;c&quot;</span>, <span class="dv">4</span>))
 test&lt;-<span class="kw">nbinomTest</span>(countsTest2, <span class="dt">condition =</span> cond)</code></pre></div>
-<p>To find the most changed genes, we will focus only on those that have a small pint and fold greater than 1.5.</p>
+<p>To find the most changed genes, we will focus only on those that have a small pvalue and fold greater than 1.5.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
 testFiltered &lt;-<span class="st"> </span><span class="kw">filter</span>(test, pvalue<span class="op">&lt;</span><span class="fl">0.05</span>)
 testFiltered &lt;-<span class="st"> </span><span class="kw">filter</span>(testFiltered, <span class="kw">abs</span>(log2FoldChange)<span class="op">&gt;</span><span class="fl">0.6</span>)

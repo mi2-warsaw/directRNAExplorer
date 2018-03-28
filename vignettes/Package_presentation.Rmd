@@ -182,7 +182,7 @@ cond  <- c(rep("wt", 3), rep("c", 4))
 test<-nbinomTest(countsTest2, condition = cond)
 ```
 
-To find the most changed genes, we will focus only on those that have a small pint and fold greater than 1.5.
+To find the most changed genes, we will focus only on those that have a small pvalue and fold greater than 1.5.
 ```{r}
 library(dplyr)
 testFiltered <- filter(test, pvalue<0.05)
