@@ -12,5 +12,5 @@ Main functionalities:
 # Vignettes
 The short introduction to package `directRNAExplorer` can be found [here](http://rawgit.com/mi2-warsaw/directRNAExplorer/master/vignettes/Package_presentation.html).
 
-#Acknowledgements
+# Acknowledgements
 This project is supported from the NCN Opus grant 2016/21/B/ST6/02176.
