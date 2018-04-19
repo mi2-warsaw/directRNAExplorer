@@ -1,5 +1,5 @@
 ---
-title: Likelihood ratio test and quasi-likelihood ratio test for detecting changed genes
+title: Likelihood ratio test and quasi-likelihood F-test for detecting changed genes
 author: "Aleksandra Grudziąż"
 date: "19 kwietnia 2018"
 output: pdf_document
@@ -91,7 +91,7 @@ nrow(testFiltered)
 
 
 
-##Quasi-likelihood ratio test
+##Quasi-likelihood F-test
 As before, we use the `testEdger()` function to find differences in genes, but in this case we use the "qlt" value for the `type` argument.
 
 ```{r}
