@@ -12,7 +12,8 @@ Imports:
 	tidyr,
 	grid, 
 	DESeq2, 
-	limma
+	limma, 
+	edgeR
 License: GPL
 Encoding: UTF-8
 LazyData: true
