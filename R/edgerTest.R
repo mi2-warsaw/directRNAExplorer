@@ -12,21 +12,22 @@
 #'
 #'@export
 
-edgerTest <- function(countsData, condition, type="glf",...){
-    y <- DGEList(counts = t(countsData), group = condition)
-    y <- calcNormFactors(y)
-    design <- model.matrix(~condition)
-    if (type == "lrt") {
-      fit <- glmFit(y, design, ...)
-      lrt <- glmLRT(fit, coef = 2)
-      result <- lrt@.Data[[14]]
-    }
-    if (type == "qlf") {
-      fit <- glmQLFit(y, design, ...)
-      qlf <- glmQLFTest(fit, coef = 2)
-      result <- qlf@.Data[[17]]
-    }
-    result$id <- rownames(result)
+edgerTest <- function(countsData, condition, type="qlf",...){
+  y <- DGEList(counts = t(countsData), group = condition)
+  y <- calcNormFactors(y)
+  design <- model.matrix(~condition)
+  y <- estimateDisp(y, design)
+  if (type == "lrt") {
+    fit <- glmFit(y, design)
+    lrt <- glmLRT(fit, coef = 2)
+    result <- lrt@.Data[[14]]
+  }
+  if (type == "qlf") {
+    fit <- glmQLFit(y, design)
+    qlf <- glmQLFTest(fit, coef = 2)
+    result <- qlf@.Data[[17]]
+  }
+  result$id <- rownames(result)
     colnames(result)[4] <- "pvalue"
     colnames(result)[1] <- "log2FoldChange"
     return(result)

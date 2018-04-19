@@ -1,0 +1,118 @@
+---
+title: Likelihood ratio test and quasi-likelihood ratio test for detecting changed genes
+author: "Aleksandra Grudziąż"
+date: "19 kwietnia 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Data
+To prepare the following tables with counts, I used the Araport database, which is a more accurate version of the TAIR10 database, which I used in my previous analyzes. This database better assigns parts to the corresponding genes. In addition, counts take into account the distance between 300b and the longer 3'UTR for each gene we have more than 5 counts. If so, these counts are also counted as readings for the gene. In the analysis below, we look for differences between the wild subtype and the brm mutant.
+```{r}
+load("countsAll_new.rda")
+```
+
+
+```{r}
+library(directRNAExplorer)
+library(dplyr)
+```
+
+#Testing diffrences in genes
+
+As before, before testing we have to choose the "appropriate" genes, that is, those for whom the quality of sequencing satisfies us. We assumed that for wt a good sequencing for the gene is where at least 2 out of 3 samples we have more than 9 readings, and for mutations brm if at least 3 out of 4 samples we have more than 9 readings. In addition, we are looking for genes that have many counts in one of the subtypes and hardly any at all.
+```{r}
+genesTest <-c() 
+countsWithCondition <- countsAll_new
+
+
+for(i in 2:ncol(countsAll)){
+  countsWithCondition[,i] <- ifelse(countsAll[,i]>=9, 1, 0)
+}
+
+allCounts_2 <- countsWithCondition[,c(1:8)]
+genes <- allCounts_2[,1]
+
+allCountsTransposed <- t(allCounts_2[,-1])
+allCountsTransposed <- data.frame(allCountsTransposed)
+colnames(allCountsTransposed)<- genes
+
+allCountsTransposed$type <- c(rep("wt", 3), rep("brm", 4))
+allCountsTransposed <- allCountsTransposed[,c(ncol(allCountsTransposed), 1:(ncol(allCountsTransposed)-1))]
+
+sums <- aggregate(. ~ type, data=allCountsTransposed, FUN=sum)
+
+for(i in 2:ncol(allCountsTransposed)){
+  if(((sums[1,i]>=3) & (sums[2,i]>=2)) || ((sums[1,i]>=3) & (sums[2,i]==0))||((sums[1,i]==0) & (sums[2,i]>=2))){
+    genesTest[i] <- colnames(allCountsTransposed)[i] 
+  }else{
+    genesTest[i] <- NA
+  }
+}
+
+genesTest2<- na.omit(genesTest)
+
+countsTest <- countsAll_new[,c(1:8)]
+countsTest <- countsTest[which(countsTest$name %in% genesTest2),]
+
+countsTest2 <- data.frame(t(countsTest[,-1]))
+colnames(countsTest2) <- countsTest$name
+
+```
+
+
+##Likelihood ratio test
+For selected genes we perform a likelihood ratio test, in order to find genes for which the number of readings has changed significantly divided into two groups - wt and brm.
+The `testEdger()` is based on `edgeR` R package.
+We choose the `type` "lrt"" to perform likelihood ratio test.
+```{r}
+cond  <- c(rep("wt", 3), rep("brm", 4))
+test<-edgerTest(countsTest2, condition = cond, type="lrt")
+```
+
+To find the most changed genes, we will focus only on those that have a small pvalue and fold greater than 1.6.
+```{r}
+library(dplyr)
+testFiltered <- filter(test, pvalue<0.05)
+testFiltered <- filter(testFiltered, abs(log2FoldChange)>0.32)
+testFiltered <- arrange(testFiltered, pvalue)
+testFiltered <- arrange(testFiltered, desc(log2FoldChange))
+
+head(testFiltered, 8)
+```
+
+
+```{r}
+nrow(testFiltered)
+```
+
+
+
+##Quasi-likelihood ratio test
+As before, we use the `testEdger()` function to find differences in genes, but in this case we use the "qlt" value for the `type` argument.
+
+```{r}
+cond  <- c(rep("wt", 3), rep("brm", 4))
+test<-edgerTest(countsTest2, condition = cond, type="qlf")
+```
+
+
+To find the most changed genes, we will focus only on those that have a small pvalue and fold greater than 1.6.
+```{r}
+library(dplyr)
+testFiltered <- filter(test, pvalue<0.05)
+testFiltered <- filter(testFiltered, abs(log2FoldChange)>0.32)
+testFiltered <- arrange(testFiltered, pvalue)
+testFiltered <- arrange(testFiltered, desc(log2FoldChange))
+
+head(testFiltered, 8)
+```
+
+
+```{r}
+nrow(testFiltered)
+```
+

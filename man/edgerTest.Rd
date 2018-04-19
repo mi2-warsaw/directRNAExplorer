@@ -4,7 +4,7 @@
 \alias{edgerTest}
 \title{EdgeR based test for differential expression analysis}
 \usage{
-edgerTest(countsData, condition, type = "glf", ...)
+edgerTest(countsData, condition, type = "qlf", ...)
 }
 \arguments{
 \item{countsData}{Data frame containing counts for each}
