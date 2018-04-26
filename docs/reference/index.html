@@ -18,16 +18,11 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Function reference" />
-
-
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -37,14 +32,12 @@
 <![endif]-->
 
 
-
-
   </head>
 
   <body>
     <div class="container template-reference-index">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top navbar-mi2" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -52,14 +45,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">directRNAExplorer</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9000</span>
-      </span>
+	  <a class = "navbar-mi2logo" href="http://mi2.mini.pw.edu.pl/">
+        <img src = "https://github.com/mi2-warsaw/MI2template/blob/master/inst/pkgdown/assets/MI2logo.jpg?raw=true" alt = "MI2" height = 46 title = "MI2">
+	  </a>
+      <a class="navbar-brand navbar-mi2" href="../index.html"></a>
     </div>
-
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="navbar-mi2 nav navbar-nav">
         <li>
   <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
@@ -89,7 +81,6 @@
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
-      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -97,166 +88,171 @@
       
       </header>
 
-<div class="row">
-  <div class="contents col-md-9">
+      <div class="row">
+  <div class="col-md-9">
     <div class="page-header">
-      <h1>Reference</h1>
+      <h1>
+        Reference
+        <small>version&nbsp;0.0.0.9000</small>
+      </h1>
     </div>
 
-    <table class="ref-index">
+    <div class="contents">
+      <table class="ref-index">
 
-    <colgroup>
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+      <colgroup>
+        <col class="alias" />
+        <col class="title" />
+      </colgroup>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="Araport11.html">Araport11</a></code> </p>
-        </td>
-        <td><p>Araport11</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="bamToR.html">bamToR()</a></code> </p>
-        </td>
-        <td><p>bamToR</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="brmDataChromosome1.html">brmDataChromosome1</a></code> </p>
-        </td>
-        <td><p>brmDataChromosome1</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="countsAll.html">countsAll</a></code> </p>
-        </td>
-        <td><p>countsAll</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="countsForAllGenes.html">countsForAllGenes()</a></code> </p>
-        </td>
-        <td><p>Counts for all genes in bam data</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="countsPerGene.html">countsPerGene()</a></code> </p>
-        </td>
-        <td><p>Counts for gene</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="dataChromosome1.html">dataChromosome1</a></code> </p>
-        </td>
-        <td><p>dataChromosome1</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="dataChromosome2.html">dataChromosome2</a></code> </p>
-        </td>
-        <td><p>dataChromosome2</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="edgerTest.html">edgerTest()</a></code> </p>
-        </td>
-        <td><p>EdgeR based test for differential expression analysis</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="genesSummarize.html">genesSummarize()</a></code> </p>
-        </td>
-        <td><p>genesSumarize</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ksDistributionTest.html">ksDistributionTest()</a></code> </p>
-        </td>
-        <td><p>ksDistributionTest</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="matchToGene.html">matchToGene()</a></code> </p>
-        </td>
-        <td><p>matchToGene</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nbinomTest.html">nbinomTest()</a></code> </p>
-        </td>
-        <td><p>Negative Binomial Test</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="plotCoverage.html">plotCoverage()</a></code> </p>
-        </td>
-        <td><p>plotCoverage</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="plotGeneComparisonDistribution.html">plotGeneComparisonDistribution()</a></code> </p>
-        </td>
-        <td><p>plotGeneComparisonDistribution</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="plotGeneDistribution.html">plotGeneDistribution()</a></code> </p>
-        </td>
-        <td><p>plotGeneDistribution</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="plotHistogram.html">plotHistogram()</a></code> </p>
-        </td>
-        <td><p>plotHistogram</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="plotPoints.html">plotPoints()</a></code> </p>
-        </td>
-        <td><p>plotPoints</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="pvalTable.html">pvalTable()</a></code> </p>
-        </td>
-        <td><p>pvalTable</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="TAIR10_genes.html">TAIR10_genes</a></code> </p>
-        </td>
-        <td><p>TAIR10_genes</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="TAIR10_genes_tidy.html">TAIR10_genes_tidy</a></code> </p>
-        </td>
-        <td><p>TAIR10_genes_tidy</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="tTest.html">tTest()</a></code> </p>
-        </td>
-        <td><p>T-student test</p></td>
-      </tr>
-    </tbody>
-    </table>
+      <tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="Araport11.html">Araport11</a></code> </p>
+          </td>
+          <td><p>Araport11</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="bamToR.html">bamToR()</a></code> </p>
+          </td>
+          <td><p>bamToR</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="brmDataChromosome1.html">brmDataChromosome1</a></code> </p>
+          </td>
+          <td><p>brmDataChromosome1</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="countsAll.html">countsAll</a></code> </p>
+          </td>
+          <td><p>countsAll</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="countsForAllGenes.html">countsForAllGenes()</a></code> </p>
+          </td>
+          <td><p>Counts for all genes in bam data</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="countsPerGene.html">countsPerGene()</a></code> </p>
+          </td>
+          <td><p>Counts for gene</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="dataChromosome1.html">dataChromosome1</a></code> </p>
+          </td>
+          <td><p>dataChromosome1</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="dataChromosome2.html">dataChromosome2</a></code> </p>
+          </td>
+          <td><p>dataChromosome2</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="edgerTest.html">edgerTest()</a></code> </p>
+          </td>
+          <td><p>EdgeR based test for differential expression analysis</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="genesSummarize.html">genesSummarize()</a></code> </p>
+          </td>
+          <td><p>genesSumarize</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ksDistributionTest.html">ksDistributionTest()</a></code> </p>
+          </td>
+          <td><p>ksDistributionTest</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="matchToGene.html">matchToGene()</a></code> </p>
+          </td>
+          <td><p>matchToGene</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nbinomTest.html">nbinomTest()</a></code> </p>
+          </td>
+          <td><p>Negative Binomial Test</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plotCoverage.html">plotCoverage()</a></code> </p>
+          </td>
+          <td><p>plotCoverage</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plotGeneComparisonDistribution.html">plotGeneComparisonDistribution()</a></code> </p>
+          </td>
+          <td><p>plotGeneComparisonDistribution</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plotGeneDistribution.html">plotGeneDistribution()</a></code> </p>
+          </td>
+          <td><p>plotGeneDistribution</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plotHistogram.html">plotHistogram()</a></code> </p>
+          </td>
+          <td><p>plotHistogram</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="plotPoints.html">plotPoints()</a></code> </p>
+          </td>
+          <td><p>plotPoints</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="pvalTable.html">pvalTable()</a></code> </p>
+          </td>
+          <td><p>pvalTable</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="TAIR10_genes.html">TAIR10_genes</a></code> </p>
+          </td>
+          <td><p>TAIR10_genes</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="TAIR10_genes_tidy.html">TAIR10_genes_tidy</a></code> </p>
+          </td>
+          <td><p>TAIR10_genes_tidy</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="tTest.html">tTest()</a></code> </p>
+          </td>
+          <td><p>T-student test</p></td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
+    <ul class="nav nav-pills nav-stacked contents-mi2">
       <li><a href="#section-all-functions">All functions</a></li>
     </ul>
   </div>
@@ -268,13 +264,11 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
-
-  
 
   </body>
 </html>
